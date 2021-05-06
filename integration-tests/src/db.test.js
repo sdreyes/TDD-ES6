@@ -3,6 +3,10 @@ import { getUserByUsername } from './db';
 import { getDatabaseData, resetDatabase, setDatabaseData } from './test-helpers';
 
 describe('getUserByUsername', () => {
+  afterEach('reset the database', async () => {
+    await resetDatabase();
+  });
+
   it('gets the correct user from the database given a username', async () => {
     const fakeData = [
       {
@@ -20,7 +24,6 @@ describe('getUserByUsername', () => {
     await setDatabaseData('users', fakeData);
     const actual = await getUserByUsername('abc');
     const finalDBState = await getDatabaseData('users');
-    await resetDatabase();
 
     const expected = {
       id: '123',

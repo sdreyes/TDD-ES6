@@ -6,3 +6,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# Test coverage using nyc
+.nyc_output
+coverage
